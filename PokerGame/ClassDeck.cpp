@@ -64,6 +64,8 @@ namespace ClassDeck
 
 		// Shuffle the vector "Blend"
 		shuffle(Blend.begin(), Blend.end(), default_random_engine(0));
+		/*C++17 removed
+		random_shuffle(Blend.begin(), Blend.end());*/
 	}
 
 	// This method return the top card of the shuffled deck and delete it

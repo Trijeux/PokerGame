@@ -11,7 +11,7 @@ namespace ClassCard
 	Card::Card(string value, string color) :value(value), color(color) {}
 
 	// Return a string value of all property of the object
-	string Card::ToString()
+	string Card::Display()
 	{
 		// value of color
 		return value + " de " + color;

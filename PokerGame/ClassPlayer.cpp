@@ -1,3 +1,4 @@
+
 #include "ClassPlayer.h"
 #include "ClassDeck.h"
 #include <list>
@@ -5,7 +6,7 @@
 using namespace std;
 
 namespace ClassPlayer
-{ 
+{
 	// This method make the player draw a card on the deck and return the number of cards on hand
 	int Player::DrawCard(ClassDeck::Deck& deck)
 	{
@@ -21,31 +22,20 @@ namespace ClassPlayer
 
 	// This method allow the player to bet a sum. 
 	// The sum can't be more than the pot allowed and less than 1
-	int Player::BetToken()
+	void Player::BetToken(int nbToken)
 	{
-		int bet;
-
-		do
-		{
-			cout << "Veuillez choisir votre mise : "; 
-			cin >> bet;
-
-			if (bet > pot || bet < 1) cout << "Cette mise n'est pas valide. \n" << endl;
-
-		} while (bet > pot || bet < 1);
-
-		pot -= bet;
-		return bet;
+		if (nbToken > pot) pot -= pot;
+		else pot -= nbToken;
 	}
 
 	// This method make the player fill his pot with a number of tokens
-	void Player::GetToken(int nbToken) 
+	void Player::GetToken(int nbToken)
 	{
 		pot += nbToken;
 	}
 
 	// This method show the number of tokens in the player's pot
-	int Player::ShowPot() 
+	int Player::ShowPot()
 	{
 		return pot;
 	}
@@ -57,7 +47,9 @@ namespace ClassPlayer
 
 		for (ClassCard::Card card : hand)
 		{
-			cout << card.ToString() << endl;
+			cout << card.Display() << endl;
 		}
 	}
+
+
 }

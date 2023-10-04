@@ -2,6 +2,7 @@
 #include "ClassCard.h"
 #include "ClassDeck.h"
 #include "ClassPlayer.h"
+#include "FonctionBot.h"
 
 #pragma region using
 using Card = ClassCard::Card;
@@ -21,14 +22,14 @@ int main()
 	//int communPot;
 	int nbPlayers = 2;
 	bool gameContinue = true;
+	int mise;
 
 
 	for (int i = 0; i < nbPlayers; i++)
 	{
 		player1.DrawCard(gameDeck);
-		player2.DrawCard(gameDeck);
 	}
-		
+
 	while (true)
 	{
 		cout << "Veuillez choisir une action <1>Miser <2>Parler <3>Ce coucher : \n";
@@ -37,7 +38,17 @@ int main()
 
 		if (choice == "1")
 		{
-			player1.BetToken();
+			
+			do
+			{
+				cout << "Choisi ta mise :";
+				cin >> mise;
+				if (mise < 1 || mise > player1.ShowPot())
+				{
+					cout << "La mise n'est pas valide" << endl;
+				}
+			} while (mise < 1 || mise > player1.ShowPot());
+			player1.BetToken(mise);
 		}
 		else if (choice == "2")
 		{
@@ -47,6 +58,12 @@ int main()
 		{
 			//player2.GetToken(communPot);
 		}
+
+		int potplayer2 = MainFonctionBot(choice, mise);
+
+		cout << player1.ShowPot() << endl;
+		cout << potplayer2 << endl;
+
 	}
 
 	return 0;

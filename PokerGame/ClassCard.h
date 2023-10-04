@@ -17,7 +17,7 @@ namespace ClassCard
 		Card(string value, string color);
 
 		// Return a string value of all property of the object
-		string ToString();
+		string Display();
 
 	private:
 		// Private property for the value of the card

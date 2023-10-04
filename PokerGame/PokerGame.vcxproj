@@ -130,12 +130,14 @@
     <ClCompile Include="ClassCard.cpp" />
     <ClCompile Include="ClassDeck.cpp" />
     <ClCompile Include="ClassPlayer.cpp" />
+    <ClCompile Include="FonctionBot.cpp" />
     <ClCompile Include="main.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="ClassCard.h" />
     <ClInclude Include="ClassDeck.h" />
     <ClInclude Include="ClassPlayer.h" />
+    <ClInclude Include="FonctionBot.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

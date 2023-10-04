@@ -18,7 +18,7 @@ namespace ClassPlayer
 
 		// This method allow the player to bet some tokens. 
 		// The number of tokens can't be more than the pot and less than 1
-		int BetToken();
+		void BetToken(int nbToken);
 
 		// This method make the player fill his pot with a number of tokens
 		void GetToken(int nbToken);
@@ -34,7 +34,7 @@ namespace ClassPlayer
 		vector<ClassCard::Card> hand;
 
 		// Private property for the number of player's tokens
-		int pot;
+		int pot = 1000;
 	};
 }
 
