@@ -59,10 +59,10 @@ int main()
 			//player2.GetToken(communPot);
 		}
 
-		int potplayer2 = MainFonctionBot(choice, mise);
+		MainFonctionBot(choice, mise, player2);
 
 		cout << player1.ShowPot() << endl;
-		cout << potplayer2 << endl;
+		cout << player2.ShowPot() << endl;
 
 	}
 
