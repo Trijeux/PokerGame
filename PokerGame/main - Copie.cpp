@@ -1,10 +1,12 @@
 ﻿#include <iostream>
 #include <Windows.h>
+#include "ClassCard.h"
 #include "ClassDeck.h"
 #include "ClassPlayer.h"
 #include "ClassPokerGame.h"
 
 #pragma region using
+using namespace ClassCard;
 using namespace ClassDeck;
 using namespace ClassPlayer;
 using namespace ClassPokerGame;
@@ -15,12 +17,37 @@ using namespace std;
 int main()
 {
 	ShowWindow(GetConsoleWindow(), SW_MAXIMIZE);
+
 	
+	Player player("Player1");
+	Player bot("Bot");
+	Deck gameDeck;
+	Card card1('A', 'H');
+	Card card2('A', 'C');
+	Card card3('A', 'P');
+	Card card4('K', 'C');
+	Card card5('A', 'D');
+	Card card6('6', 'C');
+	PokerGame gameTable;
+
+	vector<Card> temp;
+	temp.push_back(card4);
+	temp.push_back(card5);
+	temp.push_back(card6);
+	temp.push_back(card3);
+	temp.push_back(card2);
+	temp.push_back(card1);
+	
+	cout << gameTable.CheckHand(temp);
+
+	#pragma region game
+	/*
 	#pragma region Variables
 	Player player("Player1");
 	Player bot("Bot");
 	Deck gameDeck;
 	PokerGame gameTable;
+	char nbPlayer=2;
 	#pragma endregion
 
 	// Fill de deck with the 52 poker cards
@@ -56,7 +83,7 @@ int main()
 					cin >> betSum;
 
 					// If the bet is valable, break the loop
-					if (betSum < player.GetPot() && betSum>0) break;
+					if (betSum <= player.GetPot() && betSum>0) break;
 					// If the bet is not valable, show a message
 					cout << "\nCette mise n'est pas permise, veuillez choisir une mise possible." << endl;
 					system("PAUSE");
@@ -126,6 +153,7 @@ int main()
 			break;
 		} while (true);
 	} while (player.GetPot() >= 0 || bot.GetPot() >= 0);
-	
+	*/
+#pragma endregion
 	return 0;
 }

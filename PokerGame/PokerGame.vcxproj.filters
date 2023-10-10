@@ -27,7 +27,7 @@
     <ClCompile Include="ClassCard.cpp">
       <Filter>Fichiers sources</Filter>
     </ClCompile>
-    <ClCompile Include="FonctionBot.cpp">
+    <ClCompile Include="ClassPokerGame.cpp">
       <Filter>Fichiers sources</Filter>
     </ClCompile>
   </ItemGroup>
@@ -41,7 +41,7 @@
     <ClInclude Include="ClassCard.h">
       <Filter>Fichiers d%27en-tête</Filter>
     </ClInclude>
-    <ClInclude Include="FonctionBot.h">
+    <ClInclude Include="ClassPokerGame.h">
       <Filter>Fichiers d%27en-tête</Filter>
     </ClInclude>
   </ItemGroup>

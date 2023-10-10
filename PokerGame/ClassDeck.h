@@ -4,29 +4,32 @@
 #include "ClassCard.h"
 
 using namespace std;
+using namespace ClassCard;
 
 namespace ClassDeck
 { 
 	class Deck
 	{
 	public:
-		// This method will fill the "Deck" object with the 52 poker cards and add it to the "Pack" private property
-		void FillDeck(); 
+	#pragma region METHODS
+		// This method fills the pack with the 52 cards
+		void FillDeck();
 
-		// This method will copy the private property "Pack" in the private property "Blend" and shuffle it
+		// This method copies the pack in blend and shuffle it
 		void BlendDeck();
 
-		// This method return the top card of the shuffled deck and delete it
-		ClassCard::Card GiveCard();
+		// This method returns the top card of the shuffled deck and delete it
+		Card GiveCard();
+	#pragma endregion
 
-		
 	private:
+	#pragma region PROPERTIES
 		// Private property for orderly poker card deck
 		vector<ClassCard::Card> Pack;
 
 		// Private property for shuffled poker card deck
 		vector<ClassCard::Card> Blend;
-		
+	#pragma endregion
 	};
 }
 

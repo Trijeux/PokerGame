@@ -1,19 +1,46 @@
 #include <iostream>
+#include <vector>
+#include <algorithm>
 #include "ClassCard.h"
 
 using namespace std;
 
 namespace ClassCard
 {
-	// Property:
-	//	Value -> Poker card value (Two to Ace)
-	//	color -> Poker card color (Spade, Club, Diamond, Heart)
-	Card::Card(string value, string color) :value(value), color(color) {}
-
-	// Return a string value of all property of the object
-	string Card::Display()
+	#pragma region CONSTRUCTORS
+	// Parameter:
+	//	string value -> Poker card value (Two to Ace)
+	//	string color -> Poker card color (Spade, Club, Diamond, Heart)
+	Card::Card(char value, char color) :Value(value), Color(color) 
 	{
-		// value of color
-		return value + " de " + color;
+		for (string line : DefaultCardSkin)
+		{
+			replace(line.begin(), line.end(), '%', Color);
+			replace(line.begin(), line.end(), '&', Value);
+
+			CardSkin.push_back(line);
+		}
 	}
+	#pragma endregion
+
+	#pragma region METHODS
+	// This method returns a vector with the card skin 
+	// Propertie:
+	//	bool hide -> true : Hide the card
+	//		       false : Show the card
+	vector<string> Card::Display(bool hide)
+	{
+		if (hide)
+		{
+			return DefaultCardSkin;
+		}
+		return CardSkin;
+	}
+
+	// This method returns a vector with all properties of the card
+	vector<char> Card::GetCardProperties() 
+	{
+		return { Value, Color };
+	}
+	#pragma endregion
 }

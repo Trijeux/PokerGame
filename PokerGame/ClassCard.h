@@ -1,6 +1,6 @@
 #pragma once
 #include <iostream>
-
+#include <vector>
 using namespace std;
 
 namespace ClassCard
@@ -8,23 +8,46 @@ namespace ClassCard
 	class Card
 	{
 	public:
-		// Default constructor
-		Card() = default;
+	#pragma region CONSTRUCTORS
+		// Parameter:
+		//	string value -> Poker card value (Two to Ace)
+		//	string color -> Poker card color (Spade, Club, Diamond, Heart)
+		Card(char value, char color);
+	#pragma endregion
 
-		// Property:
-		//	Value -> Poker card value (Two to Ace)
-		//	color -> Poker card color (Spade, Club, Diamond, Heart)
-		Card(string value, string color);
+	#pragma region METHODS
+		// This method returns a vector with the card skin 
+		// Propertie:
+		//	bool hide -> true : Hide the card
+		//		       false : Show the card
+		vector<string> Display(bool hide = false);
 
-		// Return a string value of all property of the object
-		string Display();
+		// This method returns a vector with all properties of the card
+		vector<char> GetCardProperties();
+	#pragma endregion
 
 	private:
+	#pragma region PROPERTIES
 		// Private property for the value of the card
-		string value;
+		char Value;
 
 		// Private property for the color of the card
-		string color;
+		char Color;
+
+		// Private property for the default card's skin
+		vector<string> DefaultCardSkin = {
+			"#########",
+			"# %   % #",
+			"#       #",
+			"#   &   #",
+			"#       #",
+			"# %   % #",
+			"#########"
+		};
+
+		vector < string> CardSkin;
+	#pragma endregion
+
 	};
 }
 

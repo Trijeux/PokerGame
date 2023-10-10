@@ -1,62 +1,56 @@
-#include <iostream>
+﻿#include <iostream>
 #include <algorithm>
-#include<random>
-#include <vector>
+#include <random>
 #include "ClassDeck.h"
 #include "ClassCard.h"
 
-using namespace std;
-
 namespace ClassDeck
 {
-	// This method will fill the "Deck" object with the 52 poker cards and add it to the "Pack" private property
+	#pragma region METHODS
+	// This method fills the pack with the 52 cards
 	void Deck::FillDeck()
 	{
-		// Make a list "cardValue" with all poker cards values from Two to Ace
-		string cardValue[13]
+		// Make a list "cardValue" with all poker card values from Two to Ace
+		char cardValue[13]
 		{
-			"Deux",
-			"Trois",
-			"Quatre",
-			"Cinq",
-			"Six",
-			"Sept",
-			"Huit",
-			"Neuf",
-			"Dix",
-			"Valet",
-			"Reine",
-			"Roi",
-			"As"
+			'2',
+			'3',
+			'4',
+			'5',
+			'6',
+			'7',
+			'8',
+			'9',
+			'T',
+			'J',
+			'Q',
+			'K',
+			'A'
 		};
 
-		// Make a list "cardColor" with all poker cards colors (Spade, Club, Diamond, Heart)  
-		string cardColor[4]
+
+		// Make a list "cardColor" with all poker card colors (Spade, Club, Diamond, Heart)  
+		char cardColor[4]
 		{
-			"Pique",
-			"Trefle",
-			"Carreau",
-			"Coeur"
+			'C',
+			'D', 
+			'H',
+			'S'
 		};
 
-		// Instantiate a variable i for iteration 
-		int i = 0;
-
-		// For all color in cardColor
-		for (const string& color : cardColor)
+		// For all colors in cardColor
+		for (char& color : cardColor)
 		{
-			// For all value in cardValue
-			for (const string& value : cardValue)
+			// For all values in cardValue
+			for (char& value : cardValue)
 			{
-				// Make a ClassCard with the parameters "value" and "color" from "cardValue" and "cardColor" and add it to the deck's property list "Pack"
-				Pack.push_back(ClassCard::Card(value, color));
-				// Increment the variable i
-				i++;
+				// Make a card with the parameters "value" and "color" from "cardValue" and "cardColor" and add it to the Pack
+				Pack.push_back(Card(value, color));
 			}
 		}
 	}
 
-	// This method will copy the private property "Pack" in the private property "Blend" and shuffle it
+	// This method copies the pack in blend and shuffle it
 	void Deck::BlendDeck()
 	{
 		// Make a copy of the vector "Pack" inside of Blend
@@ -64,15 +58,18 @@ namespace ClassDeck
 
 		// Shuffle the vector "Blend"
 		shuffle(Blend.begin(), Blend.end(), default_random_engine(0));
-		/*C++17 removed
-		random_shuffle(Blend.begin(), Blend.end());*/
 	}
 
-	// This method return the top card of the shuffled deck and delete it
-	ClassCard::Card Deck::GiveCard()
+	// This method returns the top card of the shuffled deck and delete it
+	Card Deck::GiveCard()
 	{
-		ClassCard::Card card = Blend[Blend.size()-1];
+		// Get the last card on the vector "Blend"
+		Card card = Blend[Blend.size() - 1];
+
+		// Delete the last card of the vector "Blend"
 		Blend.pop_back();
+
 		return card;
 	}
+	#pragma endregion
 }
